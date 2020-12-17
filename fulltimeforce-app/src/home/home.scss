@@ -1,12 +1,27 @@
+.ant-layout {
+  .ant-page-header, .ant-page-header-ghost {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background: #ffffff;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.15);
+  }
+  .ant-page-header-heading-title {
+    color: #299bf4;
+  }
+}
 
-.home {
+.ant-layout-content {
   padding: 2em;
+  background: #299bf4;
 
   .custom-card-size {
-    height: 40em;
+    height: 45em;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.15);
   }
 
   .avatar {
     max-width: 100%;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.15);
   }
 }
