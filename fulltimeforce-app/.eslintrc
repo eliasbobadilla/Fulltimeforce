@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "react-app",
+    "plugin:prettier/recommended",
+    "plugin:jsdoc/recommended"
+  ],
+  "rules": {
+    "quotes": ["warn", "single", "avoid-escape"],
+    "jsdoc/check-tag-names": ["error", { "definedTags": ["component"] }],
+    "jsdoc/no-undefined-types": 0
+  }
+}
