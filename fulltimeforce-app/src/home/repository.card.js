@@ -1,8 +1,6 @@
 import React from 'react';
 import { Card, Timeline } from 'antd';
 
-import './home.scss';
-
 export const RepositoryCard = () => {
   return (
     <Card title="Git commit history" className="custom-card-size">
