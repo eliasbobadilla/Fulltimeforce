@@ -14,12 +14,12 @@ import './App.scss';
  * @author Elías Bobadilla <elias.bobadilla@gmail.com>
  * {@link https://github.com/eliasbobadilla GitHub}
  */
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Home />
     </div>
   );
-}
+};
 
 export default App;

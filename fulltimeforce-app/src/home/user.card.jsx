@@ -1,12 +1,16 @@
+import React, { useState, useEffect } from 'react';
 import { Card, Form, Input, Select, Space, Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 
 export const UserCard = () => {
-  const username = 'EliasBobadilla';
   const { Option } = Select;
   const { Search } = Input;
   const [form] = Form.useForm();
+  const [username, setUsername] = useState('');
 
+  useEffect(() => {
+    setUsername('EliasBobadilla');
+  }, []);
   /**
    * Método para mostrar los datos del repositorio en la página
    *
