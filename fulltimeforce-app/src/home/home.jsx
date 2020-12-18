@@ -1,25 +1,24 @@
 import React from 'react';
 import { Row, Col, Layout, PageHeader } from 'antd';
-import { UserCard } from './user.card';
-import { RepositoryCard } from './repository.card';
+import { UserInfo } from './user.info';
+import { CommitHistory } from './commit.history';
 import './home.scss';
 
 export const Home = () => {
   const { Content } = Layout;
-
   return (
     <Layout>
       <PageHeader
         title={<img src="/fulltimeforce-logo.png" alt="username" />}
         subTitle="Technical Evaluation"
       />
-      <Content className="container">
+      <Content>
         <Row gutter={[24, 24]}>
           <Col span={6}>
-            <UserCard />
+            <UserInfo />
           </Col>
           <Col span={18}>
-            <RepositoryCard />
+            <CommitHistory />
           </Col>
         </Row>
       </Content>

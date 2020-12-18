@@ -18,10 +18,10 @@ const slice = createSlice({
       state.user = action.payload;
     },
     setRepositories(state, action) {
-      state.list = action.payload;
+      state.repositories = action.payload;
     },
     setCommits(state, action) {
-      state.list = action.payload;
+      state.commits = action.payload;
     },
   },
 });
@@ -36,29 +36,32 @@ export const setUser = (username) => (dispatch) => {
     const response = await fetch(`https://api.github.com/users/${username}`);
     const data = await response.json();
     dispatch(slice.actions.setUser(data));
+    dispatch(setLoading(false));
     dispatch(setRepositories(username));
-    dispatch(setCommits(username));
-    dispatch(setLoading(true));
   })();
 };
 
 export const setRepositories = (username) => (dispatch) => {
+  dispatch(setLoading(true));
   (async () => {
     const response = await fetch(
       `https://api.github.com/users/${username}/repos`
     );
     const data = await response.json();
     dispatch(slice.actions.setRepositories(data));
+    dispatch(setLoading(false));
   })();
 };
 
-export const setCommits = (username) => (dispatch) => {
+export const setCommits = (username, repository) => (dispatch) => {
+  dispatch(setLoading(true));
   (async () => {
     const response = await fetch(
-      `https://api.github.com/repos/${username}/Fulltimeforce/commits`
+      `https://api.github.com/repos/${username}/${repository}/commits`
     );
     const data = await response.json();
     dispatch(slice.actions.setCommits(data));
+    dispatch(setLoading(false));
   })();
 };
 

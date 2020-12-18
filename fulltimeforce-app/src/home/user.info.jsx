@@ -1,50 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Card, Form, Input, Select, Space, Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser, setCommits } from './home.slice';
 
-export const UserCard = () => {
+export const UserInfo = () => {
   const { Option } = Select;
   const { Search } = Input;
   const [form] = Form.useForm();
-  const [username, setUsername] = useState('');
+  const dispatch = useDispatch();
+  const { home } = useSelector((state) => state);
 
   useEffect(() => {
-    setUsername('EliasBobadilla');
-  }, []);
+    const demo = { username: 'EliasBobadilla', repo: 'Fulltimeforce' };
+    dispatch(setUser(demo.username));
+    dispatch(setCommits(demo.username, demo.repo));
+    form.setFieldsValue(demo);
+  }, [dispatch, form]);
+
   /**
-   * Método para mostrar los datos del repositorio en la página
-   *
    * @function handleOnChange
-   * @param {string} value nombre del repositorio
+   * @param {string} value selected github repository
    */
   function handleOnChange(value) {
-    console.log(value);
+    dispatch(setCommits(home.user?.login, value));
   }
 
   /**
-   * Método para mostrar los datos de un usuario en la página
-   *
    * @function handleOnSearch
-   * @param {string} value nombre del usuario
+   * @param {string} value github username
    */
   function handleOnSearch(value) {
-    console.log(value);
+    dispatch(setUser(value));
   }
 
   return (
-    <Card title={username} className="custom-card-size">
+    <Card title={home.user?.login} className="custom-card-size">
       <Space direction="vertical" size="large">
-        <img
-          className="avatar"
-          src="https://avatars2.githubusercontent.com/u/21095562?v=4"
-          alt="username"
-        />
+        <img className="avatar" src={home.user?.avatar_url} alt="username" />
         <Form key="form" name="form" form={form} layout="vertical">
           <Form.Item
             label={
               <span>
                 Nombre de usuario&nbsp;
-                <Tooltip title="Ingresar el usuario en github que deseas consultar, ejemplo: eliasbobadilla">
+                <Tooltip title="Ingresa el usuario de github que deseas consultar, ejemplo: eliasbobadilla">
                   <InfoCircleOutlined />
                 </Tooltip>
               </span>
@@ -72,22 +71,18 @@ export const UserCard = () => {
                 </Tooltip>
               </span>
             }
-            name="repos"
+            name="repo"
           >
             <Select
               style={{ width: '100%' }}
               onChange={handleOnChange}
               showArrow
             >
-              <Option value="repo1" key="1">
-                repo1
-              </Option>
-              <Option value="repo2" key="2">
-                repo2
-              </Option>
-              <Option value="repo3" key="3">
-                repo3
-              </Option>
+              {home.repositories.map((x, i) => (
+                <Option value={x.name} key={i}>
+                  {x.name}
+                </Option>
+              ))}
             </Select>
           </Form.Item>
         </Form>
