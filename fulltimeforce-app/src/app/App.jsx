@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Spin } from 'antd';
 import { Home } from '../home/home';
 import 'antd/dist/antd.css';
 import './App.scss';
@@ -15,10 +17,11 @@ import './App.scss';
  * {@link https://github.com/eliasbobadilla GitHub}
  */
 const App = () => {
+  const { loading } = useSelector((state) => state.home);
   return (
-    <div className="App">
+    <Spin spinning={loading} size="large">
       <Home />
-    </div>
+    </Spin>
   );
 };
 

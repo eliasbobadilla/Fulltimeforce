@@ -8,3 +8,8 @@ body {
   color: $fulltimeforce-blue;
   background: $fulltimeforce-blue;
 }
+
+/* Fix antd styles */
+.ant-spin-nested-loading > div > .ant-spin {
+  max-height: 100% !important;
+}
