@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/require-returns */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -26,10 +27,18 @@ const slice = createSlice({
   },
 });
 
+/**
+ * @function setLoading
+ * @param {boolean} value set main loading as true or false
+ */
 export const setLoading = (value) => (dispatch) => {
   dispatch(slice.actions.setLoading(value));
 };
 
+/**
+ * @function setUser
+ * @param {string} username github username to fetch
+ */
 export const setUser = (username) => (dispatch) => {
   dispatch(setLoading(true));
   (async () => {
@@ -41,6 +50,10 @@ export const setUser = (username) => (dispatch) => {
   })();
 };
 
+/**
+ * @function setRepositories
+ * @param {string} username github username to fetch
+ */
 export const setRepositories = (username) => (dispatch) => {
   dispatch(setLoading(true));
   (async () => {
@@ -53,6 +66,11 @@ export const setRepositories = (username) => (dispatch) => {
   })();
 };
 
+/**
+ * @function setCommits
+ * @param {string} username github username
+ * @param {string} repository github repository to fetch
+ */
 export const setCommits = (username, repository) => (dispatch) => {
   dispatch(setLoading(true));
   (async () => {
