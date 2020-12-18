@@ -42,7 +42,7 @@ export const UserInfo = () => {
           <Form.Item
             label={
               <span>
-                Nombre de usuario&nbsp;
+                Username&nbsp;
                 <Tooltip title="Ingresa el usuario de github que deseas consultar, ejemplo: eliasbobadilla">
                   <InfoCircleOutlined />
                 </Tooltip>
@@ -65,7 +65,7 @@ export const UserInfo = () => {
           <Form.Item
             label={
               <span>
-                Repositorios&nbsp;
+                Repositories&nbsp;
                 <Tooltip title="Selecciona un repositorio para visualizar los commits, ejemplo: Fulltimeforce">
                   <InfoCircleOutlined />
                 </Tooltip>
